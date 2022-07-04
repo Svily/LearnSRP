@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Profiling;
 using UnityEngine.Rendering;
 
 public partial class CameraRender
@@ -9,8 +10,14 @@ public partial class CameraRender
     partial void DrawGizoms();
 
     partial void PrepareForSceneWindow();
+
+    partial void PrepareBuffer();
+    
+    
     
 #if UNITY_EDITOR
+    
+    private string SampleName { get; set; }
     
     private static Material errorMaterial;
     
@@ -60,6 +67,19 @@ public partial class CameraRender
             ScriptableRenderContext.EmitWorldGeometryForSceneView(this.camera);
         }
     }
+
+    partial void PrepareBuffer()
+    {
+        Profiler.BeginSample("Editor Only");
+        this.buffer.name = this.SampleName = this.camera.name;
+        Profiler.EndSample();
+    }
+    
+#else
+
+    string SampleName => buffName;
     
 #endif
+
+   
 }
