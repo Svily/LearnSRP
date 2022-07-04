@@ -52,14 +52,21 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\CustomRP\Examples\PerObjectMaterialProperties.cs" />
      <Compile Include="Assets\CustomRP\Runtime\CustomRenderPipelineAsset.cs" />
+     <Compile Include="Assets\CustomRP\Runtime\CameraRender.Editor.cs" />
      <Compile Include="Assets\CustomRP\Runtime\CameraRender.cs" />
      <Compile Include="Assets\CustomRP\Runtime\CustomRenderPipeline.cs" />
-     <Compile Include="Assets\CustomRP\Runtime\CameraRender.Editor.cs" />
-     <Compile Include="Assets\CustomRP\Examples\PerObjectMaterialProperties.cs" />
+     <Compile Include="Assets\CustomRP\Examples\MeshBall.cs" />
+     <Compile Include="Assets\CustomRP\Examples\Lighting.cs" />
      <None Include="Assets\CustomRP\Shaders\Unlit.shader" />
+     <None Include="Assets\CustomRP\Shaders\LitPass.hlsl" />
+     <None Include="Assets\CustomRP\Shaders\Lit.shader" />
+     <None Include="Assets\CustomRP\ShaderLibrary\Light.hlsl" />
+     <None Include="Assets\CustomRP\ShaderLibrary\Lighting.hlsl" />
      <None Include="Assets\CustomRP\ShaderLibrary\Common.hlsl" />
      <None Include="Assets\CustomRP\ShaderLibrary\UnityInput.hlsl" />
+     <None Include="Assets\CustomRP\ShaderLibrary\Surface.hlsl" />
      <None Include="Assets\CustomRP\Shaders\UnlitPass.hlsl" />
  <Reference Include="UnityEngine">
  <HintPath>E:/Unity/2020.3.33f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -628,50 +635,50 @@
  <Reference Include="System.Xml.Serialization">
  <HintPath>E:/Unity/2020.3.33f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.ShaderGraph.Editor">
+ <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+ <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Universal.Editor">
+ <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+ <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+ <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+ <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Mathematics.Editor">
+ <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Searcher.Editor">
+ <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.Runtime">
+ <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
  <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+ <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Universal.Shaders">
- <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Core.Runtime">
- <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Searcher.Editor">
- <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Universal.Editor">
- <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Mathematics.Editor">
- <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
- <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.Core.Editor">
  <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
- <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
- </Reference>
  <Reference Include="Unity.Mathematics">
  <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
- <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
- </Reference>
- <Reference Include="Unity.ShaderGraph.Editor">
- <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Universal.Runtime">
- <HintPath>E:/Client/LearnSRP/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
