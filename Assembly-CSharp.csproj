@@ -59,9 +59,11 @@
      <Compile Include="Assets\CustomRP\Runtime\CustomRenderPipeline.cs" />
      <Compile Include="Assets\CustomRP\Examples\MeshBall.cs" />
      <Compile Include="Assets\CustomRP\Examples\Lighting.cs" />
+     <Compile Include="Assets\CustomRP\Examples\CustomShaderGUI.cs" />
      <None Include="Assets\CustomRP\Shaders\Unlit.shader" />
      <None Include="Assets\CustomRP\Shaders\LitPass.hlsl" />
      <None Include="Assets\CustomRP\Shaders\Lit.shader" />
+     <None Include="Assets\CustomRP\ShaderLibrary\BRDF.hlsl" />
      <None Include="Assets\CustomRP\ShaderLibrary\Light.hlsl" />
      <None Include="Assets\CustomRP\ShaderLibrary\Lighting.hlsl" />
      <None Include="Assets\CustomRP\ShaderLibrary\Common.hlsl" />

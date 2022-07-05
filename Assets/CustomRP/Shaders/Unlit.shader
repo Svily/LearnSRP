@@ -35,6 +35,6 @@ shader "Custom RP/Unlit"{
         
     }
     
-    
+    CustomEditor "CustomShaderGUI"
     
 }
